@@ -21,9 +21,14 @@ npm run build
 ```
 
 ## Despliegue
-Es necesario modificar el fichero `package.json` previamente y configurar el nombre del bucket S3.
+Es necesario en primer lugar crear un bucket S3 y a continuación [configurarlo para que se comporte como un sitio web](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteAccessPermissionsReqd.html). Para simplificar la tarea se puede utilizar el script proporcionado:
 
-Es necesario también [configurar el bucket S3 para que se comporte como un sitio web](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteAccessPermissionsReqd.html).
+```sh
+./crear_bucket.sh NOMBRE_BUCKET
+```
+
+A continuación es necesario modificar el fichero `package.json` previamente y configurar el nombre del bucket S3.
+
 
 ```sh
 npm run deploy
