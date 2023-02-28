@@ -1,0 +1,19 @@
+name: Despliegue de sitio estático en S3
+on:
+  push:
+    branches:
+      - master # ¡OJO! Comprueba si tu rama principal es 'master' o 'main' y pon el valor correcto
+jobs:
+  Despliegue:                            # Nombre del trabajo
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2        # Acción necesaria para descargar el código fuente
+      - name: Configure AWS Credentials  # Acción para configurar las credenciales de AWS
+        uses: aws-actions/configure-aws-credentials@v1
+        with:                            # Es necesario establecer secretos del repositorio con las credenciales del laboratorio de AWS
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-session-token: ${{ secrets.AWS_SESSION_TOKEN }}
+          aws-region: us-east-1
+      - run: npm install                 # Instalación de dependencias
+      - run: npm run deploy              # Script de despliegue
