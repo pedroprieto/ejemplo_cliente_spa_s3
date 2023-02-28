@@ -14,6 +14,7 @@ npm run dev
 ```
 
 ## Compilación y generación del sitio estático
+El sitio se genera en la carpeta `dist`.
 
 ```sh
 npm run build
