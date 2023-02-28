@@ -1,29 +1,33 @@
-# proyecto_vue
+# Ejemplo de despliegue automático de una aplicación SPA en S3
 
-This template should help get you started developing with Vue 3 in Vite.
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
+## Instalación de dependencias
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+### Servidor de pruebas
+El archivo `vite.config.js` se ha modificado para que la aplicación se ejecute en el puerto 8080 y pueda ser accesible desde el editor Cloud9.
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+### Compilación y generación del sitio estático
 
 ```sh
 npm run build
 ```
+
+### Despliegue
+Es necesario modificar el fichero `package.json` previamente y configurar el nombre del bucket S3.
+
+```sh
+npm run deploy
+```
+
+### Despliegue continuo en GitHub Actions
+Se proporciona el archivo `workflow.yml.example` con una plantilla de ejemplo para crear un fichero `.github/workflows/despliegue.yml`. Es necesario configurar los secretos de repositorio para almacenar las credenciales de AWS:
+- `AWS_ACCESS_KEY_ID`
+- `AWS_SECRET_ACCESS_KEY`
+- `AWS_SESSION_TOKEN`
